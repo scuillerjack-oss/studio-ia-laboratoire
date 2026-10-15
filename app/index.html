@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="CIBLE — touchez un maximum de cibles en 30 secondes.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CIBLE">
+  <title>CIBLE</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <!-- Écran d'accueil -->
+    <section id="screen-home" class="screen screen--center is-active" aria-labelledby="home-title">
+      <div class="logo" aria-hidden="true"><span></span></div>
+      <h1 id="home-title" class="title">CIBLE</h1>
+      <p class="lead">Touchez un maximum de cibles en <strong>30&nbsp;secondes</strong>.<br>
+        Enchaînez sans rater&nbsp;: toutes les 5 touches, +1 bonus.</p>
+      <button id="btn-play" class="btn" type="button">Jouer</button>
+      <p class="best">Meilleur score&nbsp;: <strong id="home-best">0</strong></p>
+      <span id="app-version" class="version">__VERSION__</span>
+    </section>
+
+    <!-- Écran de jeu -->
+    <section id="screen-game" class="screen screen--game" hidden aria-label="Partie en cours">
+      <header class="hud">
+        <div class="hud__item"><span class="hud__label">Score</span><span id="hud-score" class="hud__value">0</span></div>
+        <div class="hud__item hud__item--time"><span class="hud__label">Temps</span><span id="hud-time" class="hud__value">30</span></div>
+        <div class="hud__item hud__item--combo"><span class="hud__label">Combo</span><span id="hud-combo" class="hud__value">×0</span></div>
+      </header>
+      <div id="play-area" class="play-area" role="application" aria-label="Zone de jeu : touchez les cibles"></div>
+    </section>
+
+    <!-- Écran de fin -->
+    <section id="screen-end" class="screen screen--center" hidden aria-labelledby="end-title">
+      <h2 id="end-title" class="title title--small">Temps écoulé&nbsp;!</h2>
+      <p id="end-record" class="record" hidden>Nouveau record&nbsp;!</p>
+      <p class="score-big"><span id="end-score">0</span><span class="score-big__unit">points</span></p>
+      <p class="best">Meilleur score&nbsp;: <strong id="end-best">0</strong></p>
+      <p id="end-stats" class="stats"></p>
+      <button id="btn-replay" class="btn" type="button">Rejouer</button>
+      <span class="version" data-version-label></span>
+    </section>
+  </main>
+
+  <script type="module" src="game.js"></script>
+  <script src="sw-register.js"></script>
+</body>
+</html>

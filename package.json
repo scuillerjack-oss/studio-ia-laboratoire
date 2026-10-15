@@ -1,0 +1,15 @@
+{
+  "name": "studio-ia-laboratoire",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Laboratoire du studio : chaîne mission -> code -> tests -> bêta PWA, avec le mini-jeu CIBLE comme démonstrateur.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"tests/**/*.test.js\"",
+    "build": "node scripts/build.js",
+    "serve": "npx --yes serve dist"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -5,7 +5,7 @@ name: Archiver les PWA en ligne
 on:
   push:
     branches: ['archive/**']
-    paths: ['.github/workflows/archiver-pwa.yml', 'scripts/aspirer_pwa.py']
+    paths: ['scripts/aspirer_pwa.py']
   workflow_dispatch:
 
 permissions:
@@ -21,9 +21,7 @@ jobs:
         continue-on-error: true
         run: |
           python3 scripts/aspirer_pwa.py "https://frontieres-arken-v0.scuillerjack.chatgpt.site/?source=pwa&version=v6.0.2" archives/frontieres-arken-v6
-          python3 scripts/aspirer_pwa.py "https://frontieres-prototype-01.scuillerjack.chatgpt.site/" archives/frontieres-prototype-01
-          mkdir -p archives/_diagnostic
-          curl -sS -m 30 -A "Mozilla/5.0 (Linux; Android 14)" -D archives/_diagnostic/entetes-arken.txt -o archives/_diagnostic/page-arken.html "https://frontieres-arken-v0.scuillerjack.chatgpt.site/" || true
+          python3 scripts/aspirer_pwa.py "https://frontieres-prototype-01.scuillerjack.chatgpt.site/" /tmp/prototype-01 || true
       - name: Résumé
         run: |
           for d in archives/*/; do echo "### $d : $(find "$d" -type f | wc -l) fichiers"; done >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,32 @@
+name: Nouvelle mission
+description: Donner une mission au studio depuis le téléphone
+title: "[Mission] "
+labels: ["mission", "à-valider"]
+body:
+  - type: input
+    id: projet
+    attributes:
+      label: Projet
+      placeholder: ex. rupture-v0
+    validations:
+      required: true
+  - type: textarea
+    id: objectif
+    attributes:
+      label: Ce que je veux
+      description: En quelques phrases, comme tu le dirais à voix haute.
+    validations:
+      required: true
+  - type: textarea
+    id: interdit
+    attributes:
+      label: À ne pas toucher
+      placeholder: ex. les sauvegardes des joueurs, le menu principal
+  - type: dropdown
+    id: priorite
+    attributes:
+      label: Priorité
+      options:
+        - Normale
+        - Urgente
+        - Quand vous avez le temps

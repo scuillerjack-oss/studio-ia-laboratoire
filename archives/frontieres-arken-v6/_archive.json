@@ -1,0 +1,40 @@
+{
+  "source": "https://frontieres-arken-v0.scuillerjack.chatgpt.site/?source=pwa&version=v6.0.2",
+  "fichiers_sauves": [
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/app.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/icons/icon-192.png",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/icons/icon-512.png",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/icons/icon-maskable-512.png",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/index.html",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/manifest.webmanifest",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/domain/constants.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/domain/game-engine.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/map/arken-v1-map.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/map/validate-map.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/persistence/save-codec.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/presentation/map-view-model.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/presentation/screen-flow.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/presentation/start-flow.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/presentation/v3-ux.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/presentation/v4-ux.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/presentation/v5-ux.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/src/state/create-game-state.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/styles.css",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/sw.js",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/v5.css",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/v[X]"
+  ],
+  "introuvables": [
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/asset-manifest.json -> page HTML renvoyée (fichier absent)",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/v[X] -> HTTP 404 ",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/favicon.ico -> page HTML renvoyée (fichier absent)",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/manifest.json -> page HTML renvoyée (fichier absent)",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/robots.txt -> page HTML renvoyée (fichier absent)",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/service-worker.js -> page HTML renvoyée (fichier absent)",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/serviceworker.js -> page HTML renvoyée (fichier absent)",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/version.json -> page HTML renvoyée (fichier absent)",
+    "https://frontieres-arken-v0.scuillerjack.chatgpt.site/version.txt -> page HTML renvoyée (fichier absent)"
+  ]
+}

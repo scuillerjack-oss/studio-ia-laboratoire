@@ -1,0 +1,34 @@
+name: Archiver les PWA en ligne
+
+# Sauvetage : copie les versions publiées de jeux dont le code source a été
+# perdu, et les range dans archives/ sur la branche courante (jamais main).
+on:
+  push:
+    branches: ['archive/**']
+    paths: ['.github/workflows/archiver-pwa.yml', 'scripts/aspirer_pwa.py']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  archiver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aspirer les jeux
+        run: |
+          python3 scripts/aspirer_pwa.py "https://frontieres-arken-v0.scuillerjack.chatgpt.site/?source=pwa&version=v6.0.2" archives/frontieres-arken-v6
+          python3 scripts/aspirer_pwa.py "https://frontieres-prototype-01.scuillerjack.chatgpt.site/" archives/frontieres-prototype-01
+      - name: Résumé
+        run: |
+          for d in archives/*/; do echo "### $d : $(find "$d" -type f | wc -l) fichiers"; done >> "$GITHUB_STEP_SUMMARY"
+      - name: Ranger dans la branche
+        run: |
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add archives
+          if git diff --cached --quiet; then echo "Rien de nouveau"; exit 0; fi
+          git commit -m "Archive des PWA FRONTIÈRES et ARKEN V6 (copie de la version publiée)"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

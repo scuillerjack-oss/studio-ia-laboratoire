@@ -11,6 +11,7 @@ import json
 import re
 import sys
 import urllib.parse
+import urllib.error
 import urllib.request
 from collections import deque
 from pathlib import Path
@@ -53,6 +54,7 @@ def fetch(url):
         return r.status, r.read(), r.headers.get('content-type', '')
 
 
+OUT.mkdir(parents=True, exist_ok=True)
 root = f'{BASE.scheme}://{HOST}/'
 queue = deque([START, root] + [root + c for c in COMMON])
 seen, saved, missing = set(), [], []
@@ -65,8 +67,12 @@ while queue and len(saved) < MAX_FILES:
     seen.add(key)
     try:
         status, body, ctype = fetch(url)
-    except Exception as e:  # 404 attendus pour les noms « courants » devinés
-        missing.append(f'{key} -> {e}')
+    except urllib.error.HTTPError as e:  # 404 attendus pour les noms « courants » devinés
+        detail = e.read()[:300].decode('utf-8', 'replace').replace('\n', ' ')
+        missing.append(f'{key} -> HTTP {e.code} {detail}')
+        continue
+    except Exception as e:
+        missing.append(f'{key} -> {type(e).__name__}: {e}')
         continue
     dest = local_path(key)
     # Une page d'erreur HTML servie à la place d'un .js/.json n'est pas gardée.

@@ -18,9 +18,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Aspirer les jeux
+        continue-on-error: true
         run: |
           python3 scripts/aspirer_pwa.py "https://frontieres-arken-v0.scuillerjack.chatgpt.site/?source=pwa&version=v6.0.2" archives/frontieres-arken-v6
           python3 scripts/aspirer_pwa.py "https://frontieres-prototype-01.scuillerjack.chatgpt.site/" archives/frontieres-prototype-01
+          mkdir -p archives/_diagnostic
+          curl -sS -m 30 -A "Mozilla/5.0 (Linux; Android 14)" -D archives/_diagnostic/entetes-arken.txt -o archives/_diagnostic/page-arken.html "https://frontieres-arken-v0.scuillerjack.chatgpt.site/" || true
       - name: Résumé
         run: |
           for d in archives/*/; do echo "### $d : $(find "$d" -type f | wc -l) fichiers"; done >> "$GITHUB_STEP_SUMMARY"
@@ -28,7 +31,7 @@ jobs:
         run: |
           git config user.name "Claude"
           git config user.email "noreply@anthropic.com"
-          git add archives
+          git add -f archives
           if git diff --cached --quiet; then echo "Rien de nouveau"; exit 0; fi
           git commit -m "Archive des PWA FRONTIÈRES et ARKEN V6 (copie de la version publiée)"
           git push origin "HEAD:${GITHUB_REF_NAME}"
